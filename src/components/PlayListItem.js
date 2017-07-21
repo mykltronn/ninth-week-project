@@ -4,17 +4,33 @@ import React, { Component } from 'react';
 export default class PlayListItem extends Component {
     constructor(props){
         super(props)
+
+        this.handleMouseEnter = this.handleMouseEnter.bind(this)
+        this.handleMouseLeave = this.handleMouseLeave.bind(this)
+
+        this.state = {
+            liClass: 'li-hide'
+        }
+    }
+
+    handleMouseEnter(event){
+        this.setState({liClass: 'li-show'})
+    }
+
+    handleMouseLeave(event){
+        this.setState({liClass: 'li-hide'})
     }
 
 
     render() {
-        let songCards = this.props.songs.map(song => {
+        let slicedCards = this.props.songs.slice(0, 6)
+        let songCards = slicedCards.map(song => {
             return (
                 <ul className="card" key={song._id}>
-                    <li>User: <span>{song.userName}</span></li>
-                    <li>Artist/Band: <span>{song.songArtist}</span></li>
-                    <li>Title: <span>{song.songTitle}</span></li>
-                    <li>Notes: <span>{song.songNotes}</span></li>
+                    <li className={this.state.liClass}>User:<span>{song.userName}</span></li>
+                    <li onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} >Artist/Band: <span>{song.songArtist}</span></li>
+                    <li className={this.state.liClass}>Title: <span>{song.songTitle}</span></li>
+                    <li className={this.state.liClass}>Notes: <span>{song.songNotes}</span></li>
                 </ul>
             )
         })
