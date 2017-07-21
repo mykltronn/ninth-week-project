@@ -1,3 +1,4 @@
+// see PlayListItem component for current problem...UPDATE: Working problem fixed, but notes kept in location cause they're interesting.
 import React, { Component } from 'react';
 import '../styles/App.css';
 import NavBar from './NavBar.js';

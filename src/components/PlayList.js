@@ -13,10 +13,12 @@ export default class PlayList extends Component {
     }
 
     componentDidMount(){
+        console.log("'Playlist' did mount");
         fetch('https://tiny-lasagna-server.herokuapp.com/collections/playlisting').then(results => {
               return results.json();
             }).then(data => {
               this.setState({songs: data});
+              console.log("and " + this.state.songs + " is this.state.songs");
             })
     }
 
@@ -27,14 +29,15 @@ export default class PlayList extends Component {
        return results.json();
      }).then(data => {
        this.setState({songs: data});
+       console.log(this.state.songs);
      })
     }
 
     render() {
         return (
             <div className="playlist col-6">
-                <button type="submit" className="btn btn-primary" onSubmit={this.fetchData}>Update List</button>
-                <PlayListItem songs={this.state.songs}/>
+                <button type="submit" className="btn btn-primary" onClick={this.fetchData}>Update List</button>
+                <PlayListItem songs={this.state.songs} />
             </div>
         )
     }
