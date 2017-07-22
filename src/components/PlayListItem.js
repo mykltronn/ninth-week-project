@@ -23,12 +23,12 @@ export default class PlayListItem extends Component {
 
 
     render() {
-        let slicedCards = this.props.songs.slice(0, 6)
+        let slicedCards = this.props.songs.slice(0, 9)
         let songCards = slicedCards.map(song => {
             return (
-                <ul className="card" key={song._id}>
+                <ul className="card" key={song._id} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} >
                     <li className={this.state.liClass}>User:<span>{song.userName}</span></li>
-                    <li onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} >Artist/Band: <span>{song.songArtist}</span></li>
+                    <li className="li-show">Artist/Band: <span>{song.songArtist}</span></li>
                     <li className={this.state.liClass}>Title: <span>{song.songTitle}</span></li>
                     <li className={this.state.liClass}>Notes: <span>{song.songNotes}</span></li>
                 </ul>
