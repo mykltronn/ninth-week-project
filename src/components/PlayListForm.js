@@ -60,6 +60,7 @@ export default class PlayListForm extends Component {
     render() {
         return (
             <form className="playlist-form col-6">
+                <h1>{this.state.test}</h1>
                 <div className="form-group">
                     <label htmlFor="userName">User Name</label>
                     <input type="text" className="form-control" name="userName" onChange={this.handleUserName} value={this.state.userName}/>
